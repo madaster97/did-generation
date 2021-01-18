@@ -1,0 +1,15 @@
+{
+  "delta": {
+    "patches": [
+      {
+        "action": "add-public-keys",
+        "publicKeys": []
+      }
+    ],
+    "updateCommitment": "EiC-qrDPRaeqKShWqgS6htLpFirhssenbgG469mETV_JmA"
+  },
+  "suffixData": {
+    "deltaHash": "EiAATBE6qx_oAr1hNWr988V59KxxUN9Ulyyt3CaI_FWLJQ",
+    "recoveryCommitment": "EiC-qrDPRaeqKShWqgS6htLpFirhssenbgG469mETV_JmA"
+  }
+}

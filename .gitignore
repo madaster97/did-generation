@@ -1,12 +1,11 @@
 # Ignore node_modules
 node_modules
 
-# Ignore generated private keys
-keys
+# Ignore generated entities with private keys
+entities
 
-# Ignore dids + didDocs other than examples
-didDocs/*
-!didDocs/exampleSuffix.json
+# Include example entity
+!entities/example
 
-dids/*
-!dids/exampleSuffix.txt
+# Specifically remove private keys for example entity
+entities/example/*.json
