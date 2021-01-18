@@ -1,2 +1,12 @@
-keys
+# Ignore node_modules
 node_modules
+
+# Ignore generated private keys
+keys
+
+# Ignore dids + didDocs other than examples
+didDocs/*
+!didDocs/exampleSuffix.json
+
+dids/*
+!dids/exampleSuffix.txt

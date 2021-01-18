@@ -1,6 +1,7 @@
 const fs = require('fs');
 const got = require('got');
 const path = require('path');
+const jose = require('node-jose');
 
 const keyFolder = 'keys';
 const didDocFolder = 'didDocs';
@@ -35,13 +36,31 @@ const API = 'http://localhost:8080/api/test/generate-did';
                 }))
             }
         });
-        Promise.all(keys).then(values => {
-            const body = {};
-            values.forEach(value => {
-                body[value.name] = value.keyJwk;
+        // Convert private keys to public before transmitting
+        Promise.all(keys).then(privateKeys => {
+            const promises = [];
+            privateKeys.forEach(key => {
+                promises.push(new Promise((res,rej) => {
+                    jose.JWK.asKey(key.keyJwk,"json").then(privateKey => {
+                        res({
+                            name: key.name,
+                            keyJwk: privateKey.toJSON(false)
+                        });
+                    }).catch(rej);
+                }));
             });
-            return body;
-        }).then(async (json) => {
+            return promises;
+        })
+        // Aggregate public key JWKs
+        .then(publicKeys => {
+            const body = {};
+            publicKeys.forEach(key => {
+                body[key.name] = key.keyJwk;
+            });
+            return body; 
+        })
+        // Send public key payload to API
+        .then(async (json) => {
             const { body } = await got.post(API, {
                 json,
                 responseType: 'json'
