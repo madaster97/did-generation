@@ -1,0 +1,48 @@
+{
+  "delta": {
+    "patches": [
+      {
+        "action": "add-public-keys",
+        "publicKeys": [
+          {
+            "id": "signing-key-1",
+            "publicKeyJwk": {
+              "alg": "ES256",
+              "crv": "P-256",
+              "d": "Gj7276dv8uSR1XenwGS0DXFEkZFuH3pdqPkVhUWwo_E",
+              "kty": "EC",
+              "x": "2nLPZ-h8kR2p6sERMFNvG-R5_RdkHqretUJHu96IhjY",
+              "y": "leUcuefU7Vf0eeNhmsJknN7TWObrYl0X_N1CJqO_4zM"
+            },
+            "purposes": [
+              "assertionMethod",
+              "authentication"
+            ],
+            "type": "JsonWebKey2020"
+          },
+          {
+            "id": "encryption-key-1",
+            "publicKeyJwk": {
+              "alg": "ECDH-ES",
+              "crv": "P-256",
+              "d": "LTC9WTrGo0uKndEcnu0ZybsfaGE_SMOLKCZFowdLakA",
+              "kty": "EC",
+              "x": "CDP6Yu5Dao705kN-rLrCWGTQNuISwjPhe7QpW-iIaWw",
+              "y": "vdMvLUYOfxTkD3vc6y5Gdb4qI4Kd6n_zw_V4CWbKJM8"
+            },
+            "purposes": [
+              "assertionMethod",
+              "keyAgreement"
+            ],
+            "type": "JsonWebKey2020"
+          }
+        ]
+      }
+    ],
+    "updateCommitment": "EiBFqR4AMRqEEQ2PXu50MEwJ1m4wpblF8QZPJF0qYne94w"
+  },
+  "suffixData": {
+    "deltaHash": "EiAL3RGUMUPaiV9nrUqDRaFxtevzhsNVqMDzVNwk-lp08A",
+    "recoveryCommitment": "EiBn21fXAylmurx8P1hHfA_RAWl9vD0qBuj6ShTZaCKPvw"
+  }
+}
