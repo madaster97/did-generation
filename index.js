@@ -8,8 +8,7 @@ const fs = require('fs');
 const path = require('path');
 const prompt = require('prompt');
 const logger = require('debug')('prompt');
-const keyGen = require('./lib/keyGen');
-const didGen = require('./lib/didGen');
+const controller = require('./lib/controller');
 
 var schema = {
     properties: {
@@ -107,30 +106,5 @@ var schema = {
 //
 prompt.start();
 
-//
-// Get two properties from the user: email, password
-//
-prompt.get(schema, function (err, result) {
-    logger("Returned prompt %o", result);
-    
-    try {
-        // Key generation will return an empty promise once keys have been saved to file
-        if (result.genKeys === true || result.genKeys === '') {
-            logger('Key regen needed');
-            keyGen(result).then(() => {
-                logger('Key gen finished!');
-                return didGen(result.entityName);
-            }).then(() => {
-                logger('Did gen finished!')
-            });
-        } else {
-            logger('Key regen NOT needed');
-            didGen(result.entityName).then(() => {
-                logger('Did gen finished!') 
-            });
-        };
-    } catch (error) {
-        console.error(error);
-    }
-});
+prompt.get(schema, controller);
 
